@@ -69,15 +69,17 @@
 			document.getElementById("base_amount").placeholder = "Enter Amount";
 			//window.alert("amount not number");
 			return;
-		} else if (isNaN(c1) == false)
+		} else if (isNaN(c1) == false && c1 < 0)
 		{
-			//window.alert("is number");
-			//return;
+			//window.alert("less than zero");
+			document.getElementById("base_amount").value = "";
+			document.getElementById("base_amount").placeholder = "Enter Amount > 0";
+			return;
 		};
 		
 		var c2 = document.getElementById("base_int").value;
 		var c3 = document.getElementById("other_int").value;
-		
+		var c4 = document.getElementById("base_term").value;
 
 		if (c2 == "" || /\s/.test(c2) == true)
 		{
@@ -97,6 +99,7 @@
 			//return;
 		};
 		
+		// if c3 is blank or has a whitespace
 		if (c3 == "" || /\s/.test(c3) == true)
 		{
 			document.getElementById("other_int").value = "";
@@ -114,6 +117,25 @@
 			//window.alert("is number");
 			//return;
 		};		
+		
+		// if c4 is blank or has a whitespace
+		if (c4 == "" || /\s/.test(c4) == true)
+		{
+			document.getElementById("base_term").value = "";
+			document.getElementById("base_term").placeholder = "Enter Year(s)";
+			//window.alert("is blank");
+			return;
+		} else if (isNaN(c4) == true)
+		{
+			document.getElementById("base_term").value = "";
+			document.getElementById("base_term").placeholder = "Enter Year(s)";
+			//window.alert("amount not number");
+			return;
+		} else if (isNaN(c4) == false)
+		{
+			//window.alert("is number");
+			//return;
+		};	
 		
 		//check data format
 		//var c1 = isNaN(document.getElementById("base_curr").value);
@@ -776,7 +798,7 @@
 				
 				<tr>
 					<td> Term (in year(s)) </td>
-					<td> <input type="text" id="base_term" placeholder="Enter Years"> </td>
+					<td> <input type="text" id="base_term" placeholder="Enter Year(s)"> </td>
 				</tr>
 							
 			</tbody>
